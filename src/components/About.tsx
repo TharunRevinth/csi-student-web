@@ -36,7 +36,7 @@ const About = () => {
                             className={clsx(
                               {
                                 "text-white opacity-100": isActive,
-                                "text-white/5": !isActive,
+                                "text-white/20": !isActive, // Increased inactive opacity from 5 to 20 for better legibility
                               },
                               "transition-all duration-300",
                             )}>

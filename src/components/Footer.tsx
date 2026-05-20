@@ -1,4 +1,4 @@
-import { FaInstagram, FaLinkedinIn, FaXTwitter, FaFacebookF } from 'react-icons/fa6';
+import { FaInstagram, FaLinkedinIn, FaXTwitter, FaFacebookF, FaGithub } from 'react-icons/fa6';
 
 const Footer = () => {
   return (
@@ -8,7 +8,7 @@ const Footer = () => {
           <div>
             <h2 className="text-8xl font-black tracking-tighter mb-12">TALK TO US.</h2>
             <div className="flex gap-8">
-              {[FaInstagram, FaLinkedinIn, FaXTwitter, FaFacebookF].map((Icon, i) => (
+              {[FaInstagram, FaLinkedinIn, FaGithub, FaXTwitter, FaFacebookF].map((Icon, i) => (
                 <a key={i} href="#" className="text-white/40 hover:text-white transition-all transform hover:scale-125">
                   <Icon size={32} />
                 </a>
@@ -32,6 +32,7 @@ const Footer = () => {
               <ul className="space-y-4 text-xl font-bold">
                 <li><a href="mailto:csi.vitc@vit.ac.in" className="hover:line-through transition-all">EMAIL</a></li>
                 <li><a href="#" className="hover:line-through transition-all">LINKEDIN</a></li>
+                <li><a href="#" className="hover:line-through transition-all">GITHUB</a></li>
                 <li><a href="#" className="hover:line-through transition-all">INSTAGRAM</a></li>
               </ul>
             </div>

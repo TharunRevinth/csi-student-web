@@ -21,7 +21,7 @@ const Hero = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-        {/* Logos in Hero - Restoring CSI Original Color */}
+        {/* Logos in Hero - Enhanced VIT Logo Visibility */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -30,7 +30,8 @@ const Hero = () => {
         >
           <img src="/assets/csi-logo.png" alt="CSI Logo" className="h-16 md:h-20 object-contain shadow-lg" />
           <div className="w-[2px] h-12 bg-white/10"></div>
-          <img src="/assets/vit-logo.png" alt="VIT Logo" className="h-16 md:h-20 object-contain grayscale brightness-200" />
+          {/* Using brightness and invert to ensure the VIT logo is crisp on black */}
+          <img src="/assets/vit-logo.png" alt="VIT Logo" className="h-16 md:h-20 object-contain brightness-0 invert opacity-90" />
         </motion.div>
 
         <div className="mb-8">
