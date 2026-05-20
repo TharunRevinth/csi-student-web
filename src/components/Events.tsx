@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import PixelImage from './bits/PixelImage';
 
 const events = [
   {
@@ -31,15 +32,31 @@ const Events = () => {
   return (
     <section id="events" className="py-32 bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Title with Scroll Reveal Effect */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="mb-24 flex items-end justify-between"
         >
           <div>
-            <h2 className="text-sm font-black text-white uppercase tracking-[1em] mb-4">Calendar</h2>
-            <h3 className="text-6xl font-black uppercase tracking-tighter">Events</h3>
+            <motion.h2 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-sm font-black text-white uppercase tracking-[1em] mb-4"
+            >
+              Calendar
+            </motion.h2>
+            <motion.h3 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-6xl md:text-8xl font-black uppercase tracking-tighter"
+            >
+              Events
+            </motion.h3>
           </div>
           <div className="hidden md:block text-right">
             <p className="text-white/40 text-xs font-black uppercase tracking-[0.2em]">03 / Upcoming</p>
@@ -53,21 +70,28 @@ const Events = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-black text-white p-12 hover:bg-white hover:text-black transition-all duration-500 group relative overflow-hidden h-[500px] flex flex-col justify-end"
+              transition={{ duration: 0.5, delay: 0.1 * index }}
+              className="bg-black text-white group relative overflow-hidden h-[600px] flex flex-col"
             >
-              <img 
-                src={pixelPlaceholders[index % 3]} 
-                alt={event.title} 
-                className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale group-hover:opacity-10 transition-opacity"
-              />
-              <div className="relative z-10">
-                <div className="text-xs font-black tracking-[0.3em] mb-4 opacity-60 group-hover:text-black/60 transition-colors">{event.date}</div>
-                <h3 className="text-3xl font-black mb-6 leading-none">{event.title}</h3>
-                <p className="text-white/60 text-sm font-light mb-8 group-hover:text-black/80 transition-colors">
+              {/* PixelImage Integration */}
+              <div className="absolute inset-0 z-0 opacity-40 group-hover:opacity-100 transition-opacity duration-700">
+                {/* @ts-ignore */}
+                <PixelImage 
+                  src={pixelPlaceholders[index % 3]} 
+                  grid="8x8"
+                  pixelFadeInDuration={800}
+                  maxAnimationDelay={1000}
+                  className="w-full h-full"
+                />
+              </div>
+
+              <div className="relative z-10 p-12 mt-auto bg-gradient-to-t from-black via-black/80 to-transparent">
+                <div className="text-xs font-black tracking-[0.3em] mb-4 opacity-60 group-hover:text-white transition-colors">{event.date}</div>
+                <h3 className="text-3xl font-black mb-6 leading-none group-hover:tracking-wider transition-all duration-500">{event.title}</h3>
+                <p className="text-white/60 text-sm font-light mb-8 group-hover:text-white transition-colors max-w-xs">
                   {event.description}
                 </p>
-                <div className="w-12 h-1 bg-white group-hover:bg-black transition-colors"></div>
+                <div className="w-12 h-1 bg-white group-hover:w-full transition-all duration-700"></div>
               </div>
             </motion.div>
           ))}

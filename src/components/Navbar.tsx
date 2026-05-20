@@ -19,6 +19,7 @@ const Navbar = () => {
         baseColor="#000000"
         pillColor="#111111"
         pillTextColor="#ffffff"
+        hoverPillBgColor="#ffffff"
         hoveredPillTextColor="#000000"
         className="mt-6 shadow-[0_0_30px_rgba(255,255,255,0.1)] border border-white/10"
       />

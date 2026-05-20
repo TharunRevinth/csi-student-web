@@ -33,12 +33,20 @@ const Team = () => {
     <section id="team" className="py-32 bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8 }}
           className="mb-24 text-center"
         >
-          <h2 className="text-sm font-black text-white uppercase tracking-[1em] mb-4">Leadership</h2>
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="text-sm font-black text-white uppercase tracking-[1em] mb-4"
+          >
+            Leadership
+          </motion.h2>
           <div className="w-24 h-1 bg-white mx-auto"></div>
         </motion.div>
 

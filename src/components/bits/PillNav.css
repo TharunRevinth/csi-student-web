@@ -105,7 +105,7 @@
   left: 50%;
   bottom: 0;
   border-radius: 50%;
-  background: var(--base, #000);
+  background: var(--hover-bg, var(--base, #000));
   z-index: 1;
   display: block;
   pointer-events: none;
@@ -236,6 +236,6 @@
 
 .mobile-menu-popover .mobile-menu-link:hover {
   cursor: pointer;
-  background-color: var(--base);
+  background-color: var(--hover-bg, var(--base));
   color: var(--hover-text, #fff);
 }
