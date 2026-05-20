@@ -106,7 +106,7 @@ const ScrambledText = ({
   }, [radius, duration, speed, scrambleChars]);
 
   return (
-    <div ref={rootRef} className={`text-block \${className}`} style={style}>
+    <div ref={rootRef} className={`text-block ${className}`} style={style}>
       <p>{children}</p>
     </div>
   );

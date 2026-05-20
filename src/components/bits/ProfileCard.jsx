@@ -292,8 +292,8 @@ const ProfileCardComponent = ({
 
   const cardStyle = useMemo(
     () => ({
-      '--icon': iconUrl ? `url(\${iconUrl})` : 'none',
-      '--grain': grainUrl ? `url(\${grainUrl})` : 'none',
+      '--icon': iconUrl ? `url(${iconUrl})` : 'none',
+      '--grain': grainUrl ? `url(${grainUrl})` : 'none',
       '--inner-gradient': innerGradient ?? DEFAULT_INNER_GRADIENT,
       '--behind-glow-color': behindGlowColor ?? 'rgba(125, 190, 255, 0.67)',
       '--behind-glow-size': behindGlowSize ?? '50%'
@@ -306,7 +306,7 @@ const ProfileCardComponent = ({
   }, [onContactClick]);
 
   return (
-    <div ref={wrapRef} className={`pc-card-wrapper \${className}`.trim()} style={cardStyle}>
+    <div ref={wrapRef} className={`pc-card-wrapper ${className}`.trim()} style={cardStyle}>
       {behindGlowEnabled && <div className="pc-behind" />}
       <div ref={shellRef} className="pc-card-shell">
         <section className="pc-card">
@@ -317,7 +317,7 @@ const ProfileCardComponent = ({
               <img
                 className="avatar"
                 src={avatarUrl}
-                alt={`\${name || 'User'} avatar`}
+                alt={`${name || 'User'} avatar`}
                 loading="lazy"
                 onError={e => {
                   const t = e.target;
@@ -330,7 +330,7 @@ const ProfileCardComponent = ({
                     <div className="pc-mini-avatar">
                       <img
                         src={miniAvatarUrl || avatarUrl}
-                        alt={`\${name || 'User'} mini avatar`}
+                        alt={`${name || 'User'} mini avatar`}
                         loading="lazy"
                         onError={e => {
                           const t = e.target;
@@ -349,7 +349,7 @@ const ProfileCardComponent = ({
                     onClick={handleContactClick}
                     style={{ pointerEvents: 'auto' }}
                     type="button"
-                    aria-label={`Contact \${name || 'user'}`}
+                    aria-label={`Contact ${name || 'user'}`}
                   >
                     {contactText}
                   </button>

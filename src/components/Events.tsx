@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import PixelImage from './bits/PixelImage';
 
@@ -24,9 +25,47 @@ const events = [
 
 const pixelPlaceholders = [
   'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&auto=format&fit=crop&q=60',
-  'https://images.unsplash.com/photo-1558478551-1a378f63ad28?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&auto=format&fit=crop&q=60',
   'https://images.unsplash.com/photo-1563089145-599997674d42?w=800&auto=format&fit=crop&q=60',
 ];
+
+const EventCard = ({ event, index }: { event: any, index: number }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.1 * index }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="bg-black text-white group relative overflow-hidden h-[600px] flex flex-col"
+    >
+      {/* PixelImage Integration */}
+      <div className="absolute inset-0 z-0">
+        <PixelImage 
+          src={pixelPlaceholders[index % 3]} 
+          active={isHovered}
+          grid="8x8"
+          grayscaleAnimation={false}
+          pixelFadeInDuration={800}
+          maxAnimationDelay={1000}
+          className="w-full h-full opacity-60 group-hover:opacity-100 transition-opacity duration-700"
+        />
+      </div>
+
+      <div className="relative z-10 p-12 mt-auto bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none">
+        <div className="text-xs font-black tracking-[0.3em] mb-4 opacity-60 group-hover:text-white transition-colors">{event.date}</div>
+        <h3 className="text-3xl font-black mb-6 leading-none group-hover:tracking-wider transition-all duration-500">{event.title}</h3>
+        <p className="text-white/60 text-sm font-light mb-8 group-hover:text-white transition-colors max-w-xs">
+          {event.description}
+        </p>
+        <div className="w-12 h-1 bg-white group-hover:w-full transition-all duration-700"></div>
+      </div>
+    </motion.div>
+  );
+};
 
 const Events = () => {
   return (
@@ -65,35 +104,7 @@ const Events = () => {
 
         <div className="grid md:grid-cols-3 gap-1 bg-white/10">
           {events.map((event, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="bg-black text-white group relative overflow-hidden h-[600px] flex flex-col"
-            >
-              {/* PixelImage Integration */}
-              <div className="absolute inset-0 z-0 opacity-40 group-hover:opacity-100 transition-opacity duration-700">
-                {/* @ts-ignore */}
-                <PixelImage 
-                  src={pixelPlaceholders[index % 3]} 
-                  grid="8x8"
-                  pixelFadeInDuration={800}
-                  maxAnimationDelay={1000}
-                  className="w-full h-full"
-                />
-              </div>
-
-              <div className="relative z-10 p-12 mt-auto bg-gradient-to-t from-black via-black/80 to-transparent">
-                <div className="text-xs font-black tracking-[0.3em] mb-4 opacity-60 group-hover:text-white transition-colors">{event.date}</div>
-                <h3 className="text-3xl font-black mb-6 leading-none group-hover:tracking-wider transition-all duration-500">{event.title}</h3>
-                <p className="text-white/60 text-sm font-light mb-8 group-hover:text-white transition-colors max-w-xs">
-                  {event.description}
-                </p>
-                <div className="w-12 h-1 bg-white group-hover:w-full transition-all duration-700"></div>
-              </div>
-            </motion.div>
+            <EventCard key={index} event={event} index={index} />
           ))}
         </div>
       </div>

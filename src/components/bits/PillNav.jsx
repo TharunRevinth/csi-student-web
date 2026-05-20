@@ -47,14 +47,14 @@ const PillNav = ({
         const delta = Math.ceil(R - Math.sqrt(Math.max(0, R * R - (w * w) / 4))) + 1;
         const originY = D - delta;
 
-        circle.style.width = `\${D}px`;
-        circle.style.height = `\${D}px`;
-        circle.style.bottom = `-\${delta}px`;
+        circle.style.width = `${D}px`;
+        circle.style.height = `${D}px`;
+        circle.style.bottom = `-${delta}px`;
 
         gsap.set(circle, {
           xPercent: -50,
           scale: 0,
-          transformOrigin: `50% \${originY}px`
+          transformOrigin: `50% ${originY}px`
         });
 
         const label = pill.querySelector('.pill-label');
@@ -213,7 +213,7 @@ const PillNav = ({
 
   return (
     <div className="pill-nav-container">
-      <nav className={`pill-nav \${className}`} aria-label="Primary" style={cssVars}>
+      <nav className={`pill-nav ${className}`} aria-label="Primary" style={cssVars}>
         <ScrollLink
           className="pill-logo cursor-pointer flex items-center justify-center overflow-visible"
           to="home"
@@ -248,13 +248,13 @@ const PillNav = ({
         <div className="pill-nav-items desktop-only" ref={navItemsRef}>
           <ul className="pill-list" role="menubar">
             {items.map((item, i) => (
-              <li key={item.to || `item-\${i}`} role="none">
+              <li key={item.to || `item-${i}`} role="none">
                 <ScrollLink
                   role="menuitem"
                   to={item.to}
                   smooth={true}
                   duration={500}
-                  className={`pill cursor-pointer \${activeHref === item.to ? ' is-active' : ''}`}
+                  className={`pill cursor-pointer ${activeHref === item.to ? ' is-active' : ''}`}
                   aria-label={item.ariaLabel || item.label}
                   onMouseEnter={() => handleEnter(i)}
                   onMouseLeave={() => handleLeave(i)}
@@ -292,12 +292,12 @@ const PillNav = ({
       <div className="mobile-menu-popover mobile-only" ref={mobileMenuRef} style={cssVars}>
         <ul className="mobile-menu-list">
           {items.map((item, i) => (
-            <li key={item.to || `mobile-item-\${i}`}>
+            <li key={item.to || `mobile-item-${i}`}>
               <ScrollLink
                 to={item.to}
                 smooth={true}
                 duration={500}
-                className={`mobile-menu-link cursor-pointer \${activeHref === item.to ? ' is-active' : ''}`}
+                className={`mobile-menu-link cursor-pointer ${activeHref === item.to ? ' is-active' : ''}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}

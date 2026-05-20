@@ -1,61 +1,39 @@
 // @ts-nocheck
-import React, { useRef, useMemo, createContext, useContext } from 'react';
+import React, { useRef, useMemo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-const TextRevealContext = createContext({
-  scrollYProgress: null,
-  tokens: []
-});
-
-export const TextReveal = ({ body, className, children }) => {
+export const TextReveal = ({ body, className, scrollRange = ["start 0.7", "end 0.3"] }) => {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start start", "end end"]
+    offset: scrollRange
   });
 
-  const tokens = useMemo(() => body.split(' '), [body]);
+  const words = useMemo(() => body.split(' '), [body]);
 
   return (
-    <TextRevealContext.Provider value={{ scrollYProgress, tokens } }>
-      <div ref={containerRef} className={className}>
-        {children(tokens)}
+    <div ref={containerRef} className={className}>
+      <div className="sticky top-0 h-screen flex items-center">
+        <p className="flex flex-wrap gap-x-[0.25em] gap-y-[0.1em] text-4xl md:text-5xl lg:text-7xl font-black leading-[1] tracking-tighter uppercase text-white">
+          {words.map((word, i) => {
+            const start = i / words.length;
+            const end = (i + 1) / words.length;
+            // eslint-disable-next-line react-hooks/rules-of-hooks
+            const opacity = useTransform(scrollYProgress, [start, end], [0.1, 1]);
+            
+            return (
+              <motion.span 
+                key={i} 
+                style={{ opacity }}
+              >
+                {word}
+              </motion.span>
+            );
+          })}
+        </p>
       </div>
-    </TextRevealContext.Provider>
+    </div>
   );
 };
-
-const Token = ({ index, children }) => {
-  const { scrollYProgress, tokens } = useContext(TextRevealContext) ;
-  
-  const range = [index / tokens.length, (index + 1) / tokens.length];
-  const opacity = useTransform(scrollYProgress, range, [0, 1]);
-
-  return (
-    <TokenInner index={index} range={range} scrollYProgress={scrollYProgress}>
-      {children}
-    </TokenInner>
-  );
-};
-
-const TokenInner = ({ children, range, scrollYProgress }) => {
-  const [isActive, setIsActive] = React.useState(false);
-  
-  React.useEffect(() => {
-    return scrollYProgress.on("change", (v) => {
-      if (v >= range[0] && v <= range[1]) {
-        setIsActive(true);
-      } else if (v < range[0]) {
-        setIsActive(false);
-      } else {
-        setIsActive(true); // Keep it active after passing
-      }
-    });
-  }, [scrollYProgress, range]);
-
-  return <>{children(isActive)}</>;
-};
-
-TextReveal.Token = Token;
 
 export default TextReveal;

@@ -18,6 +18,7 @@ const DEFAULT_GRIDS = {
 
 export const PixelImage = ({
   src,
+  active = true,
   grid = "6x4",
   grayscaleAnimation = true,
   pixelFadeInDuration = 1000,
@@ -50,12 +51,17 @@ export const PixelImage = ({
   }, [customGrid, grid])
 
   useEffect(() => {
-    setIsVisible(true)
-    const colorTimeout = setTimeout(() => {
-      setShowColor(true)
-    }, colorRevealDelay)
-    return () => clearTimeout(colorTimeout)
-  }, [colorRevealDelay])
+    if (active) {
+      setIsVisible(true)
+      const colorTimeout = setTimeout(() => {
+        setShowColor(true)
+      }, colorRevealDelay)
+      return () => clearTimeout(colorTimeout)
+    } else {
+      setIsVisible(false)
+      setShowColor(false)
+    }
+  }, [active, colorRevealDelay])
 
   const pieces = useMemo(() => {
     const total = rows * cols
@@ -64,10 +70,10 @@ export const PixelImage = ({
       const col = index % cols
 
       const clipPath = `polygon(
-        \${col * (100 / cols)}% \${row * (100 / rows)}%,
-        \${(col + 1) * (100 / cols)}% \${row * (100 / rows)}%,
-        \${(col + 1) * (100 / cols)}% \${(row + 1) * (100 / rows)}%,
-        \${col * (100 / cols)}% \${(row + 1) * (100 / rows)}%
+        ${col * (100 / cols)}% ${row * (100 / rows)}%,
+        ${(col + 1) * (100 / cols)}% ${row * (100 / rows)}%,
+        ${(col + 1) * (100 / cols)}% ${(row + 1) * (100 / rows)}%,
+        ${col * (100 / cols)}% ${(row + 1) * (100 / rows)}%
       )`
 
       const delay = Math.random() * maxAnimationDelay
@@ -89,20 +95,20 @@ export const PixelImage = ({
           )}
           style={{
             clipPath: piece.clipPath,
-            transitionDelay: `\${piece.delay}ms`,
-            transitionDuration: `\${pixelFadeInDuration}ms`,
+            transitionDelay: isVisible ? `${piece.delay}ms` : "0ms",
+            transitionDuration: `${pixelFadeInDuration}ms`,
           }}
         >
           <img
             src={src}
-            alt={`Pixel image piece \${index + 1}`}
+            alt={`Pixel image piece ${index + 1}`}
             className={cn(
               "absolute inset-0 w-full h-full object-cover",
               grayscaleAnimation && (showColor ? "grayscale-0" : "grayscale")
             )}
             style={{
               transition: grayscaleAnimation
-                ? `filter \${pixelFadeInDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`
+                ? `filter ${pixelFadeInDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`
                 : "none",
             }}
             draggable={false}
