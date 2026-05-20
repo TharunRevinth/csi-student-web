@@ -44,6 +44,8 @@ const Hero = () => {
               shuffleDirection="down"
               duration={1}
               stagger={0.1}
+              shuffleTimes={3}
+              triggerOnHover={true}
             />
             {/* @ts-ignore */}
             <Shuffle
@@ -53,7 +55,7 @@ const Hero = () => {
               shuffleDirection="right"
               duration={0.8}
               stagger={0.05}
-              delay={0.5}
+              shuffleTimes={2}
             />
             {/* @ts-ignore */}
             <Shuffle
@@ -63,7 +65,7 @@ const Hero = () => {
               shuffleDirection="up"
               duration={0.6}
               stagger={0.02}
-              delay={1}
+              shuffleTimes={1}
             />
           </div>
         </div>

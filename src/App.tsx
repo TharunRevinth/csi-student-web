@@ -15,11 +15,8 @@ function App() {
         <Hero />
         
         <div className="bg-black py-12">
-          <ScrollVelocity 
-            texts={['INNOVATE', 'INSPIRE', 'DEVELOP', 'EMPOWER']} 
-            velocity={80} 
-            className="text-white font-black text-4xl md:text-6xl lg:text-8xl tracking-tighter" 
-          />
+          {/* @ts-ignore */}
+          <ScrollVelocity texts={['INNOVATE', 'INSPIRE', 'DEVELOP', 'EMPOWER']} velocity={80} className="text-white font-black text-4xl md:text-6xl lg:text-8xl tracking-tighter" />
         </div>
 
         <About />
@@ -27,11 +24,8 @@ function App() {
         <Stats />
         
         <div className="bg-black py-12 mt-20">
-          <ScrollVelocity 
-            texts={['UPCOMING EVENTS', 'HACKATHONS', 'WORKSHOPS']} 
-            velocity={-60} 
-            className="text-white font-black text-4xl md:text-6xl lg:text-8xl tracking-tighter" 
-          />
+          {/* @ts-ignore */}
+          <ScrollVelocity texts={['UPCOMING EVENTS', 'HACKATHONS', 'WORKSHOPS']} velocity={-60} className="text-white font-black text-4xl md:text-6xl lg:text-8xl tracking-tighter" />
         </div>
 
         <Events />

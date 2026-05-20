@@ -1,5 +1,5 @@
+// @ts-nocheck
 import { useRef, useLayoutEffect, useState } from 'react';
-import type { FC, ReactNode, RefObject, CSSProperties } from 'react';
 import {
   motion,
   useScroll,
@@ -11,7 +11,7 @@ import {
 } from 'framer-motion';
 import './ScrollVelocity.css';
 
-function useElementWidth(ref: RefObject<HTMLElement | null>) {
+function useElementWidth(ref) {
   const [width, setWidth] = useState(0);
 
   useLayoutEffect(() => {
@@ -43,28 +43,13 @@ function useElementWidth(ref: RefObject<HTMLElement | null>) {
   return width;
 }
 
-function wrap(min: number, max: number, v: number) {
+function wrap(min, max, v) {
   const range = max - min;
   const mod = (((v - min) % range) + range) % range;
   return mod + min;
 }
 
-interface VelocityTextProps {
-  children: ReactNode;
-  baseVelocity?: number;
-  scrollContainerRef?: RefObject<HTMLElement | null>;
-  className?: string;
-  damping?: number;
-  stiffness?: number;
-  numCopies?: number;
-  velocityMapping?: { input: number[]; output: number[] };
-  parallaxClassName?: string;
-  scrollerClassName?: string;
-  parallaxStyle?: CSSProperties;
-  scrollerStyle?: CSSProperties;
-}
-
-const VelocityText: FC<VelocityTextProps> = ({
+const VelocityText = ({
   children,
   baseVelocity = 100,
   scrollContainerRef,
@@ -80,7 +65,7 @@ const VelocityText: FC<VelocityTextProps> = ({
 }) => {
   const baseX = useMotionValue(0);
   const scrollOptions = scrollContainerRef ? { container: scrollContainerRef } : {};
-  const { scrollY } = useScroll(scrollOptions as any);
+  const { scrollY } = useScroll(scrollOptions);
   const scrollVelocity = useVelocity(scrollY);
   const smoothVelocity = useSpring(scrollVelocity, {
     damping: damping,
@@ -93,7 +78,7 @@ const VelocityText: FC<VelocityTextProps> = ({
     { clamp: false }
   );
 
-  const copyRef = useRef<HTMLSpanElement>(null);
+  const copyRef = useRef(null);
   const copyWidth = useElementWidth(copyRef);
 
   const x = useTransform(baseX, v => {
@@ -133,22 +118,7 @@ const VelocityText: FC<VelocityTextProps> = ({
   );
 };
 
-interface ScrollVelocityProps {
-  scrollContainerRef?: RefObject<HTMLElement | null>;
-  texts?: string[];
-  velocity?: number;
-  className?: string;
-  damping?: number;
-  stiffness?: number;
-  numCopies?: number;
-  velocityMapping?: { input: number[]; output: number[] };
-  parallaxClassName?: string;
-  scrollerClassName?: string;
-  parallaxStyle?: CSSProperties;
-  scrollerStyle?: CSSProperties;
-}
-
-export const ScrollVelocity: FC<ScrollVelocityProps> = ({
+export const ScrollVelocity = ({
   scrollContainerRef,
   texts = [],
   velocity = 100,
