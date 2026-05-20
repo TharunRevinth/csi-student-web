@@ -30,7 +30,7 @@ const team = [
 
 const Team = () => {
   return (
-    <section id="team" className="py-32 bg-white">
+    <section id="team" className="py-32 bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0 }}
@@ -38,8 +38,8 @@ const Team = () => {
           viewport={{ once: true }}
           className="mb-24 text-center"
         >
-          <h2 className="text-sm font-black text-black uppercase tracking-[1em] mb-4">Leadership</h2>
-          <div className="w-24 h-1 bg-black mx-auto"></div>
+          <h2 className="text-sm font-black text-white uppercase tracking-[1em] mb-4">Leadership</h2>
+          <div className="w-24 h-1 bg-white mx-auto"></div>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 justify-items-center">
@@ -59,10 +59,10 @@ const Team = () => {
                 handle={member.handle}
                 avatarUrl={member.image}
                 behindGlowEnabled={true}
-                behindGlowColor="rgba(0, 0, 0, 0.1)"
+                behindGlowColor="rgba(255, 255, 255, 0.1)"
                 behindGlowSize="60%"
-                innerGradient="linear-gradient(145deg, #ffffff 0%, #f3f4f6 100%)"
-                className="w-full grayscale hover:grayscale-0 transition-all duration-700"
+                innerGradient="linear-gradient(145deg, #111111 0%, #000000 100%)"
+                className="w-full grayscale hover:grayscale-0 transition-all duration-700 border border-white/5"
               />
             </motion.div>
           ))}

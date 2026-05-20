@@ -14,12 +14,13 @@ const Navbar = () => {
       {/* @ts-ignore */}
       <PillNav
         items={navItems}
-        logo={null}
-        baseColor="#ffffff"
-        pillColor="#f3f4f6"
-        pillTextColor="#000000"
-        hoveredPillTextColor="#ffffff"
-        className="mt-6 shadow-xl border border-black/5"
+        logo="/assets/csi-logo.png"
+        logoAlt="CSI VIT"
+        baseColor="#000000"
+        pillColor="#111111"
+        pillTextColor="#ffffff"
+        hoveredPillTextColor="#000000"
+        className="mt-6 shadow-[0_0_30px_rgba(255,255,255,0.1)] border border-white/10"
       />
     </div>
   );

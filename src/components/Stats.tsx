@@ -10,7 +10,7 @@ const stats = [
 const Stats = () => {
   return (
     <section className="py-32 bg-black text-white relative overflow-hidden">
-      {/* Background Grid Pattern */}
+      {/* Background Grid Pattern - Dark Theme */}
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

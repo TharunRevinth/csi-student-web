@@ -148,7 +148,7 @@ const PillNav = ({
   };
 
   const handleLogoEnter = () => {
-    // Logo effect is now handled by Shuffle component if it triggers on hover
+    // Logo effect
   };
 
   const toggleMobileMenu = () => {
@@ -223,7 +223,12 @@ const PillNav = ({
           }}
         >
           {logo ? (
-            <img src={logo} alt={logoAlt} ref={logoImgRef} />
+            <div className="flex items-center gap-2 h-full px-2">
+              {/* Removed invert filter to restore original colors */}
+              <img src={logo} alt={logoAlt} ref={logoImgRef} className="h-6 object-contain" />
+              <div className="w-[1px] h-4 bg-white/10"></div>
+              <img src="/assets/vit-logo.png" alt="VIT Logo" className="h-6 object-contain grayscale brightness-200" />
+            </div>
           ) : (
             <div className="flex items-center justify-center w-full h-full">
               <Shuffle

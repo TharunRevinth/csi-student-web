@@ -22,7 +22,12 @@ function useElementWidth(ref) {
     }
     updateWidth();
     window.addEventListener('resize', updateWidth);
-    return () => window.removeEventListener('resize', updateWidth);
+    // Initial check after a short delay to ensure fonts/layout are ready
+    const timer = setTimeout(updateWidth, 100);
+    return () => {
+      window.removeEventListener('resize', updateWidth);
+      clearTimeout(timer);
+    };
   }, [ref]);
 
   return width;
@@ -81,8 +86,8 @@ export const ScrollVelocity = ({
     }
 
     const x = useTransform(baseX, v => {
-      if (copyWidth === 0) return '0px';
-      return `\${wrap(-copyWidth, 0, v)}px`;
+      if (copyWidth === 0) return '0%'; // Fallback to 0% if width unknown
+      return `${wrap(-copyWidth, 0, v)}px`;
     });
 
     const directionFactor = useRef(1);
@@ -118,7 +123,7 @@ export const ScrollVelocity = ({
   }
 
   return (
-    <section>
+    <div className="py-20 overflow-hidden">
       {texts.map((text, index) => (
         <VelocityText
           key={index}
@@ -137,7 +142,7 @@ export const ScrollVelocity = ({
           {text}
         </VelocityText>
       ))}
-    </section>
+    </div>
   );
 };
 

@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #000000;
-  --color-secondary: #333333;
-  --color-accent: #666666;
+  --color-primary: #ffffff;
+  --color-secondary: #cccccc;
+  --color-accent: #999999;
 }
 
 :root {
@@ -11,9 +11,9 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light;
-  color: #000000;
-  background-color: #ffffff;
+  color-scheme: dark;
+  color: #ffffff;
+  background-color: #000000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -25,29 +25,29 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #ffffff;
-  color: #000000;
-}
-
-::selection {
   background-color: #000000;
   color: #ffffff;
 }
 
-/* Custom Scrollbar for Monochrome Theme */
+::selection {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Custom Scrollbar for Black Theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: #000000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #000000;
+  background: #ffffff;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #333333;
+  background: #cccccc;
 }
