@@ -14,8 +14,6 @@ const Navbar = () => {
       {/* @ts-ignore */}
       <PillNav
         items={navItems}
-        logo="/assets/csi-logo.png"
-        logoAlt="CSI VIT"
         baseColor="#000000"
         pillColor="#111111"
         pillTextColor="#ffffff"

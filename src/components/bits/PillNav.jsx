@@ -69,15 +69,15 @@ const PillNav = ({
         tlRefs.current[index]?.kill();
         const tl = gsap.timeline({ paused: true });
 
-        tl.to(circle, { scale: 1.2, xPercent: -50, duration: 0.6, ease, overwrite: 'auto' }, 0);
+        tl.to(circle, { scale: 1.2, xPercent: -50, duration: 0.4, ease, overwrite: 'auto' }, 0);
 
         if (label) {
-          tl.to(label, { y: -(h + 8), duration: 0.6, ease, overwrite: 'auto' }, 0);
+          tl.to(label, { y: -(h + 8), duration: 0.4, ease, overwrite: 'auto' }, 0);
         }
 
         if (white) {
           gsap.set(white, { y: Math.ceil(h + 10), opacity: 0 });
-          tl.to(white, { y: 0, opacity: 1, duration: 0.6, ease, overwrite: 'auto' }, 0);
+          tl.to(white, { y: 0, opacity: 1, duration: 0.4, ease, overwrite: 'auto' }, 0);
         }
 
         tlRefs.current[index] = tl;
@@ -215,7 +215,7 @@ const PillNav = ({
     <div className="pill-nav-container">
       <nav className={`pill-nav ${className}`} aria-label="Primary" style={cssVars}>
         <ScrollLink
-          className="pill-logo cursor-pointer flex items-center justify-center overflow-visible"
+          className="pill-logo group cursor-pointer flex items-center justify-center overflow-visible transition-colors duration-300"
           to="home"
           smooth={true}
           duration={500}
@@ -227,16 +227,16 @@ const PillNav = ({
           {logo ? (
             <div className="flex items-center gap-2 h-full px-2">
               {/* Restored CSI Logo and Enhanced VIT Logo Visibility for PillNav */}
-              <img src={logo} alt={logoAlt} ref={logoImgRef} className="h-6 object-contain" />
-              <div className="w-[1px] h-4 bg-white/10"></div>
-              <img src="/assets/vit-logo.png" alt="VIT Logo" className="h-6 object-contain brightness-0 invert opacity-80" />
+              <img src={logo} alt={logoAlt} ref={logoImgRef} className="h-6 object-contain transition-all duration-300" />
+              <div className="w-[1px] h-4 bg-white/10 group-hover:bg-black/10 transition-colors"></div>
+              <img src="/assets/vit-logo.png" alt="VIT Logo" className="h-6 object-contain brightness-0 invert opacity-80 group-hover:invert-0 group-hover:opacity-100 transition-all duration-300" />
             </div>
           ) : (
             <div className="flex items-center justify-center w-full h-full">
               <Shuffle
                 text="CSI"
                 tag="span"
-                className="text-white font-bold text-sm"
+                className="text-white font-bold text-sm group-hover:text-black transition-colors"
                 duration={0.3}
                 shuffleDirection="down"
                 triggerOnHover={true}

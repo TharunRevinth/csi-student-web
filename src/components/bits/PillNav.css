@@ -54,6 +54,11 @@
   justify-content: center;
   overflow: hidden;
   margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.pill-logo:hover {
+  background-color: var(--hover-bg, #fff);
 }
 
 .pill-logo img {
