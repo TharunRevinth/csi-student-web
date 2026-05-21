@@ -14,10 +14,18 @@ const Footer = () => {
           >
             <h2 className="text-8xl font-black tracking-tighter mb-12">TALK TO US.</h2>
             <div className="flex gap-8">
-              {[FaInstagram, FaLinkedinIn, FaGithub, FaXTwitter, FaFacebookF].map((Icon, i) => (
+              {[
+                { Icon: FaInstagram, href: 'https://www.instagram.com/csi.vitc/' },
+                { Icon: FaLinkedinIn, href: '#' },
+                { Icon: FaGithub, href: '#' },
+                { Icon: FaXTwitter, href: '#' },
+                { Icon: FaFacebookF, href: '#' }
+              ].map(({ Icon, href }, i) => (
                 <motion.a 
                   key={i} 
-                  href="#" 
+                  href={href} 
+                  target={href !== '#' ? "_blank" : undefined}
+                  rel={href !== '#' ? "noopener noreferrer" : undefined}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -57,7 +65,7 @@ const Footer = () => {
                 <li><a href="mailto:csi.vitc@vit.ac.in" className="hover:line-through transition-all">EMAIL</a></li>
                 <li><a href="#" className="hover:line-through transition-all">LINKEDIN</a></li>
                 <li><a href="#" className="hover:line-through transition-all">GITHUB</a></li>
-                <li><a href="#" className="hover:line-through transition-all">INSTAGRAM</a></li>
+                <li><a href="https://www.instagram.com/csi.vitc/" target="_blank" rel="noopener noreferrer" className="hover:line-through transition-all">INSTAGRAM</a></li>
               </ul>
             </motion.div>
           </div>

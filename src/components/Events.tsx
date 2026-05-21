@@ -51,6 +51,7 @@ const EventCard = ({ event, index }: { event: any, index: number }) => {
           grayscaleAnimation={false}
           pixelFadeInDuration={800}
           maxAnimationDelay={1000}
+          customGrid={undefined}
           className="w-full h-full opacity-60 group-hover:opacity-100 transition-opacity duration-700"
         />
       </div>

@@ -1,43 +1,67 @@
 import { motion } from 'framer-motion';
-import ProfileCard from './bits/ProfileCard';
+import TeamAccordion from './bits/TeamAccordion';
 
 const team = [
   {
     name: 'Dr. John Doe',
     role: 'Faculty Advisor',
     handle: 'johndoe',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&auto=format&fit=crop&q=60',
+    quote: 'Guiding the next generation of innovators through mentorship and academic excellence.',
+    instagram: 'https://www.instagram.com/csi.vitc/'
   },
   {
     name: 'Jane Smith',
     role: 'Chairperson',
     handle: 'janesmith',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&auto=format&fit=crop&q=60',
+    quote: 'Empowering students to build impactful solutions and lead with vision.',
+    instagram: 'https://www.instagram.com/csi.vitc/'
   },
   {
     name: 'Alex Johnson',
     role: 'Vice Chairperson',
     handle: 'alexj',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&auto=format&fit=crop&q=60',
+    quote: 'Fostering a culture of collaboration and technical growth within the community.',
+    instagram: 'https://www.instagram.com/csi.vitc/'
   },
   {
     name: 'Sarah Williams',
     role: 'Technical Lead',
     handle: 'sarahw',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=60',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&auto=format&fit=crop&q=60',
+    quote: 'Driving technical excellence and exploring the frontiers of modern web development.',
+    instagram: 'https://www.instagram.com/csi.vitc/'
   },
+  {
+    name: 'Michael Brown',
+    role: 'Events Head',
+    handle: 'mikeb',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&auto=format&fit=crop&q=60',
+    quote: 'Creating memorable experiences that bridge the gap between learning and fun.',
+    instagram: 'https://www.instagram.com/csi.vitc/'
+  },
+  {
+    name: 'Emily Davis',
+    role: 'Design Head',
+    handle: 'emilyd',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800&auto=format&fit=crop&q=60',
+    quote: 'Crafting beautiful interfaces that tell a story and delight users.',
+    instagram: 'https://www.instagram.com/csi.vitc/'
+  }
 ];
 
 const Team = () => {
   return (
-    <section id="team" className="py-32 bg-black text-white">
+    <section id="team" className="py-32 bg-black text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="mb-24 text-center"
+          className="mb-16 text-center"
         >
           <motion.h2 
             initial={{ opacity: 0, scale: 0.9 }}
@@ -45,36 +69,19 @@ const Team = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-sm font-black text-white uppercase tracking-[1em] mb-4"
           >
-            Leadership
+            TECHNICALS
           </motion.h2>
           <div className="w-24 h-1 bg-white mx-auto"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 justify-items-center">
-          {team.map((member, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="w-full"
-            >
-              {/* @ts-ignore */}
-              <ProfileCard
-                name={member.name}
-                title={member.role}
-                handle={member.handle}
-                avatarUrl={member.image}
-                behindGlowEnabled={true}
-                behindGlowColor="rgba(255, 255, 255, 0.1)"
-                behindGlowSize="60%"
-                innerGradient="linear-gradient(145deg, #111111 0%, #000000 100%)"
-                className="w-full grayscale hover:grayscale-0 transition-all duration-700 border border-white/5"
-              />
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          viewport={{ once: true }}
+        >
+          <TeamAccordion members={team} />
+        </motion.div>
       </div>
     </section>
   );
