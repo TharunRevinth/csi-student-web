@@ -5,15 +5,15 @@ const Footer = () => {
   return (
     <footer id="contact" className="bg-black text-white pt-32 pb-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 gap-20 mb-24">
+        <div className="grid lg:grid-cols-2 gap-20 mb-24">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h2 className="text-8xl font-black tracking-tighter mb-12">TALK TO US.</h2>
-            <div className="flex gap-8">
+            <h2 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter mb-12">TALK TO US.</h2>
+            <div className="flex flex-wrap gap-8">
               {[
                 { Icon: FaInstagram, href: 'https://www.instagram.com/csi.vitc/' },
                 { Icon: FaLinkedinIn, href: '#' },

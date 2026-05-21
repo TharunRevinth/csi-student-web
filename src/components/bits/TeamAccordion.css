@@ -208,11 +208,12 @@
   }
   
   .team-item.expanded {
-    width: 400px;
+    width: 85vw;
+    max-width: 400px;
   }
   
   .team-item.collapsed {
-    width: 70px;
+    width: 60px;
   }
   
   .member-details {
@@ -231,10 +232,14 @@
 
 @media (max-width: 480px) {
   .team-item.expanded {
-    width: 300px;
+    width: 80vw;
+  }
+  
+  .team-item.collapsed {
+    width: 50px;
   }
   
   .team-item.expanded .image-container {
-    width: 0; /* Hide image on very small screens to give space for text */
+    width: 0;
   }
 }

@@ -139,8 +139,9 @@ const TeamAccordion = ({ members }) => {
         className="team-accordion"
         drag="x"
         dragConstraints={constraints}
-        dragElastic={0.1}
+        dragElastic={0.2}
         dragMomentum={true}
+        dragTransition={{ power: 0.5, timeConstant: 100 }}
         onDragStart={() => setIsDragging(true)}
         onDragEnd={() => {
           setTimeout(() => setIsDragging(false), 50);

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { motion, useMotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 import PixelImage from './bits/PixelImage';
 
 const events = [
@@ -61,10 +61,10 @@ const EventCard = ({ event, index, isDragging }: { event: any, index: number, is
       viewport={{ once: true, margin: "-50px" }}
       onMouseEnter={() => !isDragging && setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="bg-black text-white group relative overflow-hidden h-[500px] w-[350px] md:w-[450px] flex-shrink-0 flex flex-col border border-white/5"
+      className="bg-black text-white group relative overflow-hidden h-[500px] w-[85vw] sm:w-[350px] md:w-[450px] flex-shrink-0 flex flex-col border border-white/5 select-none"
     >
       {/* PixelImage Integration */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <PixelImage 
           src={pixelPlaceholders[index % 3]} 
           active={isInView || isHovered}
@@ -77,7 +77,7 @@ const EventCard = ({ event, index, isDragging }: { event: any, index: number, is
         />
       </div>
 
-      <div className="relative z-10 p-10 mt-auto bg-gradient-to-t from-black via-black/70 to-transparent">
+      <div className="relative z-10 p-10 mt-auto bg-gradient-to-t from-black via-black/70 to-transparent pointer-events-none">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -146,7 +146,7 @@ const Events = () => {
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-6xl md:text-8xl font-black uppercase tracking-tighter"
+              className="text-4xl sm:text-6xl md:text-8xl font-black uppercase tracking-tighter"
             >
               Events
             </motion.h3>
@@ -162,11 +162,12 @@ const Events = () => {
           ref={scrollRef}
           drag="x"
           dragConstraints={constraints}
-          dragElastic={0.1}
+          dragElastic={0.2}
           dragMomentum={true}
+          dragTransition={{ power: 0.5, timeConstant: 100 }}
           onDragStart={() => setIsDragging(true)}
           onDragEnd={() => setTimeout(() => setIsDragging(false), 50)}
-          className="flex gap-4 cursor-grab active:cursor-grabbing"
+          className="flex gap-4 cursor-grab active:cursor-grabbing touch-action-none"
         >
           {events.map((event, index) => (
             <EventCard key={index} event={event} index={index} isDragging={isDragging} />
