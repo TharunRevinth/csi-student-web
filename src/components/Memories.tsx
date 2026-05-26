@@ -76,6 +76,17 @@ const Memories = () => {
             </motion.div>
           ))}
         </div>
+
+        <div className="mt-20 flex justify-center">
+          <motion.button 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="border-2 border-white text-white px-12 py-5 font-black transition-all hover:bg-white hover:text-black text-sm tracking-[0.3em] uppercase"
+          >
+            View All Memories
+          </motion.button>
+        </div>
       </div>
     </section>
   );
