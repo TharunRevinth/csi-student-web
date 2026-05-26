@@ -221,6 +221,7 @@ const PillNav = ({
           smooth={true}
           duration={500}
           onMouseEnter={handleLogoEnter}
+          onClick={() => isMobileMenuOpen && toggleMobileMenu()}
           ref={el => {
             logoRef.current = el;
           }}
@@ -299,7 +300,7 @@ const PillNav = ({
                 smooth={true}
                 duration={500}
                 className={`mobile-menu-link cursor-pointer ${activeHref === item.to ? ' is-active' : ''}`}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => toggleMobileMenu()}
               >
                 {item.label}
               </ScrollLink>

@@ -139,7 +139,7 @@ const Events = () => {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-sm font-black text-white uppercase tracking-[1em] mb-4"
+              className="text-sm font-black text-white uppercase tracking-[0.5em] sm:tracking-[1em] mb-4"
             >
               Calendar
             </motion.h2>
@@ -163,12 +163,12 @@ const Events = () => {
           ref={scrollRef}
           drag="x"
           dragConstraints={constraints}
-          dragElastic={0.2}
+          dragElastic={0.15}
           dragMomentum={true}
-          dragTransition={{ power: 0.5, timeConstant: 100 }}
+          dragTransition={{ power: 0.8, timeConstant: 200 }}
           onDragStart={() => setIsDragging(true)}
           onDragEnd={() => setTimeout(() => setIsDragging(false), 50)}
-          className="flex gap-4 cursor-grab active:cursor-grabbing touch-action-none"
+          className="flex gap-4 cursor-grab active:cursor-grabbing touch-action-pan-y"
         >
           {events.map((event, index) => (
             <EventCard key={index} event={event} index={index} isDragging={isDragging} />

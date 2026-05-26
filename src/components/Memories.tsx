@@ -44,12 +44,12 @@ const Memories = () => {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <h2 className="text-sm font-black text-white uppercase tracking-[1em] mb-4">Legacy</h2>
+          <h2 className="text-sm font-black text-white uppercase tracking-[0.5em] sm:tracking-[1em] mb-4">Legacy</h2>
           <h3 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Memories</h3>
           <div className="w-full h-[1px] bg-white/20 mt-8"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
           {memories.map((memory, index) => (
             <motion.div
               key={index}
@@ -65,8 +65,13 @@ const Memories = () => {
                 grid={memory.grid as any}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center">
+              {/* Desktop Hover Overlay */}
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden sm:flex items-center justify-center p-6 text-center pointer-events-none">
                 <p className="text-xl font-black tracking-widest uppercase">{memory.title}</p>
+              </div>
+              {/* Mobile Always-Visible Overlay */}
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-4 sm:hidden pointer-events-none">
+                <p className="text-[10px] font-black tracking-widest uppercase text-white/90">{memory.title}</p>
               </div>
             </motion.div>
           ))}

@@ -7,7 +7,7 @@ interface ScrambleHoverProps {
 
 const ScrambleHover = ({ text, className = '' }: ScrambleHoverProps) => {
   const [displayText, setDisplayText] = useState(text);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const chars = 'ABCDEFGHIJKLMN0123456789!@#$%^&*()_+';
 
   const scramble = useCallback(() => {
@@ -16,8 +16,8 @@ const ScrambleHover = ({ text, className = '' }: ScrambleHoverProps) => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     
     intervalRef.current = setInterval(() => {
-      setDisplayText(prev => 
-        text.split('').map((char, index) => {
+      setDisplayText(() => 
+        text.split('').map((_, index) => {
           if (index < iteration) {
             return text[index];
           }

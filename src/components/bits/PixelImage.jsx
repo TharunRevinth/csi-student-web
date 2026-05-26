@@ -24,7 +24,7 @@ export const PixelImage = ({
   pixelFadeInDuration = 1000,
   maxAnimationDelay = 1200,
   colorRevealDelay = 1300,
-  customGrid,
+  customGrid = undefined,
   className = ""
 }) => {
   const [isVisible, setIsVisible] = useState(false)

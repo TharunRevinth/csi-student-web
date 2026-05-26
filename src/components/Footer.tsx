@@ -38,7 +38,7 @@ const Footer = () => {
             </div>
           </motion.div>
           
-          <div className="grid grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-8 opacity-40">Navigate</h3>
-              <ul className="space-y-4 text-xl font-bold">
+              <ul className="space-y-4 text-lg sm:text-xl font-bold">
                 {['HOME', 'ABOUT', 'EVENTS', 'TEAM'].map((link) => (
                   <li key={link}>
                     <a href={`#${link.toLowerCase()}`} className="hover:line-through transition-all">{link}</a>
@@ -61,7 +61,7 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <h3 className="text-xs font-black uppercase tracking-[0.3em] mb-8 opacity-40">Connect</h3>
-              <ul className="space-y-4 text-xl font-bold">
+              <ul className="space-y-4 text-lg sm:text-xl font-bold">
                 <li><a href="mailto:csi.vitc@vit.ac.in" className="hover:line-through transition-all">EMAIL</a></li>
                 <li><a href="#" className="hover:line-through transition-all">LINKEDIN</a></li>
                 <li><a href="#" className="hover:line-through transition-all">GITHUB</a></li>

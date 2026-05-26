@@ -14,7 +14,7 @@ export const TextReveal = ({ body, className, scrollRange = ["start 0.7", "end 0
   return (
     <div ref={containerRef} className={className}>
       <div className="sticky top-0 h-screen flex items-center">
-        <p className="flex flex-wrap gap-x-[0.25em] gap-y-[0.1em] text-2xl sm:text-4xl md:text-6xl lg:text-7xl font-black leading-[1] tracking-tighter uppercase text-white">
+        <p className="flex flex-wrap gap-x-[0.25em] gap-y-[0.1em] text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black leading-[1.1] sm:leading-[1] tracking-tighter uppercase text-white">
           {words.map((word, i) => {
             const start = i / words.length;
             const end = (i + 1) / words.length;

@@ -54,8 +54,8 @@ const team = [
 
 const Team = () => {
   return (
-    <section id="team" className="py-32 bg-black text-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="team" className="py-24 sm:py-40 bg-black text-white overflow-hidden relative">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -67,7 +67,7 @@ const Team = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-sm font-black text-white uppercase tracking-[1em] mb-4"
+            className="text-sm font-black text-white uppercase tracking-[0.5em] sm:tracking-[1em] mb-4"
           >
             TECHNICALS
           </motion.h2>

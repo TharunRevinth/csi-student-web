@@ -26,11 +26,11 @@ const Hero = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex items-center justify-center gap-12 mb-16"
+          className="flex items-center justify-center gap-6 sm:gap-12 mb-16"
         >
-          <img src="/assets/csi-logo.png" alt="CSI Logo" className="h-20 md:h-28 object-contain filter drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" />
-          <div className="w-[1px] h-16 bg-white/20"></div>
-          <img src="/assets/vit-logo.png" alt="VIT Logo" className="h-20 md:h-28 object-contain brightness-0 invert opacity-90 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" />
+          <img src="/assets/csi-logo.png" alt="CSI Logo" className="h-16 sm:h-20 md:h-28 object-contain filter drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" />
+          <div className="w-[1px] h-12 sm:h-16 bg-white/20"></div>
+          <img src="/assets/vit-logo.png" alt="VIT Logo" className="h-16 sm:h-20 md:h-28 object-contain brightness-0 invert opacity-90 filter drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]" />
         </motion.div>
 
         <div className="mb-12">
@@ -39,7 +39,7 @@ const Hero = () => {
             <Shuffle
               text="CSI"
               tag="h1"
-              className="text-8xl sm:text-[12rem] md:text-[16rem] font-black text-white leading-none tracking-tighter"
+              className="text-7xl sm:text-[10rem] md:text-[12rem] lg:text-[16rem] font-black text-white leading-none tracking-tighter"
               shuffleDirection="down"
               duration={1}
               stagger={0.1}
@@ -50,7 +50,7 @@ const Hero = () => {
             <Shuffle
               text="VIT CHENNAI"
               tag="h2"
-              className="text-xl sm:text-3xl md:text-5xl font-black text-white uppercase tracking-[0.3em] mt-4 py-3 border-y-2 sm:border-y-4 border-white"
+              className="text-lg sm:text-2xl md:text-4xl lg:text-5xl font-black text-white uppercase tracking-[0.3em] mt-4 py-3 border-y-2 sm:border-y-4 border-white"
               shuffleDirection="right"
               duration={0.8}
               stagger={0.05}
@@ -60,7 +60,7 @@ const Hero = () => {
             <Shuffle
               text="Computer Society of India"
               tag="p"
-              className="text-xs sm:text-sm md:text-xl font-medium text-white/50 uppercase tracking-[0.4em] mt-8"
+              className="text-[10px] sm:text-xs md:text-lg lg:text-xl font-medium text-white/50 uppercase tracking-[0.4em] mt-8"
               shuffleDirection="up"
               duration={0.6}
               stagger={0.02}
