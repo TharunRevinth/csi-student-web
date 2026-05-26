@@ -5,6 +5,7 @@ const Navbar = () => {
     { label: 'Home', to: 'home' },
     { label: 'About', to: 'about' },
     { label: 'Events', to: 'events' },
+    { label: 'Memories', to: 'memories' },
     { label: 'Team', to: 'team' },
     { label: 'Contact', to: 'contact' },
   ];

@@ -5,7 +5,7 @@ import Shuffle from './bits/Shuffle';
 const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 bg-black overflow-hidden">
-      {/* Background Grainient in Dark Monochrome */}
+      {/* Background Effects */}
       <div className="absolute inset-0 z-0">
         {/* @ts-ignore */}
         <Grainient

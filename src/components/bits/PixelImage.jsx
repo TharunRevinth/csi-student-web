@@ -34,20 +34,28 @@ export const PixelImage = ({
   const MAX_GRID = 16
 
   const { rows, cols } = useMemo(() => {
-    const isValidGrid = (grid) => {
-      if (!grid) return false
-      const { rows, cols } = grid
+    const parseGridString = (str) => {
+      if (typeof str !== 'string') return null;
+      const [c, r] = str.split('x').map(Number);
+      if (c && r) return { rows: r, cols: c };
+      return null;
+    };
+
+    const isValidGrid = (g) => {
+      if (!g) return false;
+      const { rows, cols } = g;
       return (
         Number.isInteger(rows) &&
         Number.isInteger(cols) &&
         rows >= MIN_GRID &&
-        cols >= MIN_GRID &&
-        rows <= MAX_GRID &&
-        cols <= MAX_GRID
-      )
-    }
+        cols >= MIN_GRID
+      );
+    };
 
-    return isValidGrid(customGrid) ? customGrid : DEFAULT_GRIDS[grid]
+    const customParsed = isValidGrid(customGrid) ? customGrid : null;
+    const namedParsed = DEFAULT_GRIDS[grid] || parseGridString(grid);
+    
+    return customParsed || namedParsed || DEFAULT_GRIDS["8x8"];
   }, [customGrid, grid])
 
   useEffect(() => {
