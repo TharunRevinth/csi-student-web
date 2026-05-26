@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import PixelImage from './bits/PixelImage';
+import ScrambleHover from './bits/ScrambleHover';
 
 const events = [
   {
@@ -88,7 +89,7 @@ const EventCard = ({ event, index, isDragging }: { event: any, index: number, is
         </motion.div>
         
         <h3 className="text-2xl font-black mb-4 leading-none group-hover:tracking-wider transition-all duration-700">
-          {event.title}
+          <ScrambleHover text={event.title} />
         </h3>
         
         <p className="text-white/60 text-sm font-light mb-6 group-hover:text-white transition-all duration-700 max-w-xs transform group-hover:translate-x-2">

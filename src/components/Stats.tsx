@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import DecryptionCounter from './bits/DecryptionCounter';
 
 const stats = [
   { label: 'Events Conducted', value: '50+' },
@@ -24,7 +25,9 @@ const Stats = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl sm:text-6xl md:text-7xl font-black mb-4 tracking-tighter">{stat.value}</div>
+              <div className="text-4xl sm:text-6xl md:text-7xl font-black mb-4 tracking-tighter">
+                <DecryptionCounter value={stat.value} />
+              </div>
               <div className="text-white/40 text-xs font-black uppercase tracking-[0.3em]">
                 {stat.label}
               </div>

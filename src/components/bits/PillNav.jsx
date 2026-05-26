@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Link as ScrollLink } from 'react-scroll';
 import Shuffle from './Shuffle';
+import ScrambleHover from './ScrambleHover';
 import './PillNav.css';
 
 const PillNav = ({
@@ -269,7 +270,7 @@ const PillNav = ({
                   <span className="label-stack">
                     <span className="pill-label">{item.label}</span>
                     <span className="pill-label-hover" aria-hidden="true">
-                      {item.label}
+                      <ScrambleHover text={item.label} />
                     </span>
                   </span>
                 </ScrollLink>
