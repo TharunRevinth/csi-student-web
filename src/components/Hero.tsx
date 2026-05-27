@@ -39,7 +39,7 @@ const Hero = () => {
             <Shuffle
               text="CSI"
               tag="h1"
-              className="text-7xl sm:text-[10rem] md:text-[12rem] lg:text-[16rem] font-black text-white leading-none tracking-tighter"
+              className="text-6xl sm:text-[10rem] md:text-[12rem] lg:text-[16rem] font-black text-white leading-none tracking-tight sm:tracking-tighter"
               shuffleDirection="down"
               duration={1}
               stagger={0.1}
@@ -50,7 +50,7 @@ const Hero = () => {
             <Shuffle
               text="VIT CHENNAI"
               tag="h2"
-              className="text-lg sm:text-2xl md:text-4xl lg:text-5xl font-black text-white uppercase tracking-[0.3em] mt-4 py-3 border-y-2 sm:border-y-4 border-white"
+              className="text-base sm:text-2xl md:text-4xl lg:text-5xl font-black text-white uppercase tracking-[0.1em] sm:tracking-[0.3em] mt-4 py-3 border-y-2 sm:border-y-4 border-white"
               shuffleDirection="right"
               duration={0.8}
               stagger={0.05}
@@ -60,7 +60,7 @@ const Hero = () => {
             <Shuffle
               text="Computer Society of India"
               tag="p"
-              className="text-[10px] sm:text-xs md:text-lg lg:text-xl font-medium text-white/50 uppercase tracking-[0.4em] mt-8"
+              className="text-[10px] sm:text-xs md:text-lg lg:text-xl font-medium text-white/50 uppercase tracking-[0.15em] sm:tracking-[0.4em] mt-8"
               shuffleDirection="up"
               duration={0.6}
               stagger={0.02}
