@@ -78,6 +78,7 @@ const CustomCursor = () => {
           translateY: '-50%',
           scale: isClicking ? 0.8 : isHovered ? 4 : 1,
           opacity: isVisible ? 1 : 0,
+          willChange: 'transform, scale, opacity'
         }}
         transition={{
           scale: { duration: 0.2 },
@@ -93,6 +94,7 @@ const CustomCursor = () => {
           translateY: '-50%',
           scale: isClicking ? 1.5 : isHovered ? 0 : 1,
           opacity: isVisible ? 0.5 : 0,
+          willChange: 'transform, scale, opacity'
         }}
         transition={{
           scale: { duration: 0.3 },

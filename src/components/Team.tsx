@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import TeamAccordion from './bits/TeamAccordion';
+import QuestFragment from './bits/QuestFragment';
 
 const team = [
   {
@@ -55,6 +56,7 @@ const team = [
 const Team = () => {
   return (
     <section id="team" className="py-24 sm:py-40 bg-black text-white overflow-hidden relative">
+      <QuestFragment index={2} className="absolute bottom-10 right-10" />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}

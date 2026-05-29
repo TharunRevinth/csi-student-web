@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import PixelImage from './bits/PixelImage';
 import ScrambleHover from './bits/ScrambleHover';
+import QuestFragment from './bits/QuestFragment';
 
 const events = [
   {
@@ -42,7 +43,14 @@ const pixelPlaceholders = [
   'https://images.unsplash.com/photo-1563089145-599997674d42?w=800&auto=format&fit=crop&q=60',
 ];
 
-const EventCard = ({ event, index, isDragging }: { event: any, index: number, isDragging: boolean }) => {
+interface EventData {
+  title: string;
+  date: string;
+  description: string;
+  type: string;
+}
+
+const EventCard = ({ event, index, isDragging }: { event: EventData, index: number, isDragging: boolean }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isInView, setIsInView] = useState(false);
 
@@ -64,6 +72,7 @@ const EventCard = ({ event, index, isDragging }: { event: any, index: number, is
       onMouseLeave={() => setIsHovered(false)}
       className="bg-black text-white group relative overflow-hidden h-[500px] w-[85vw] sm:w-[350px] md:w-[450px] flex-shrink-0 flex flex-col border border-white/5 select-none"
     >
+      {index === 2 && <QuestFragment index={1} className="absolute top-4 right-4 z-20" />}
       {/* PixelImage Integration */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <PixelImage 

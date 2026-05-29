@@ -53,8 +53,18 @@ export const PixelImage = ({
     };
 
     const customParsed = isValidGrid(customGrid) ? customGrid : null;
-    const namedParsed = DEFAULT_GRIDS[grid] || parseGridString(grid);
+    let namedParsed = DEFAULT_GRIDS[grid] || parseGridString(grid);
     
+    // Reduce grid size for mobile devices for better performance
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      if (namedParsed) {
+        namedParsed = { 
+          rows: Math.max(1, Math.floor(namedParsed.rows / 1.5)), 
+          cols: Math.max(1, Math.floor(namedParsed.cols / 1.5)) 
+        };
+      }
+    }
+
     return customParsed || namedParsed || DEFAULT_GRIDS["8x8"];
   }, [customGrid, grid])
 
@@ -105,6 +115,7 @@ export const PixelImage = ({
             clipPath: piece.clipPath,
             transitionDelay: isVisible ? `${piece.delay}ms` : "0ms",
             transitionDuration: `${pixelFadeInDuration}ms`,
+            willChange: 'opacity, clip-path'
           }}
         >
           <img
@@ -118,6 +129,7 @@ export const PixelImage = ({
               transition: grayscaleAnimation
                 ? `filter ${pixelFadeInDuration}ms cubic-bezier(0.4, 0, 0.2, 1)`
                 : "none",
+              willChange: grayscaleAnimation ? 'filter' : 'auto'
             }}
             draggable={false}
           />

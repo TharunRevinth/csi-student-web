@@ -222,29 +222,33 @@ const PillNav = ({
           duration={500}
           onMouseEnter={handleLogoEnter}
           onClick={() => isMobileMenuOpen && toggleMobileMenu()}
-          ref={el => {
-            logoRef.current = el;
-          }}
         >
-          {logo ? (
-            <div className="flex items-center gap-2 h-full px-2">
-              {/* Restored CSI Logo and Enhanced VIT Logo Visibility for PillNav */}
-              <img src={logo} alt={logoAlt} ref={logoImgRef} className="h-6 object-contain transition-all duration-300" />
-              <div className="w-[1px] h-4 bg-white/10 group-hover:bg-black/10 transition-colors"></div>
-              <img src="/assets/vit-logo.png" alt="VIT Logo" className="h-6 object-contain brightness-0 invert opacity-80 group-hover:invert-0 group-hover:opacity-100 transition-all duration-300" />
-            </div>
-          ) : (
-            <div className="flex items-center justify-center w-full h-full">
-              <Shuffle
-                text="CSI"
-                tag="span"
-                className="text-white font-bold text-sm group-hover:text-black transition-colors"
-                duration={0.3}
-                shuffleDirection="down"
-                triggerOnHover={true}
-              />
-            </div>
-          )}
+          <div 
+            className="flex items-center justify-center w-full h-full"
+            ref={el => {
+              logoRef.current = el;
+            }}
+          >
+            {logo ? (
+              <div className="flex items-center gap-2 h-full px-2">
+                {/* Restored CSI Logo and Enhanced VIT Logo Visibility for PillNav */}
+                <img src={logo} alt={logoAlt} ref={logoImgRef} className="h-6 object-contain transition-all duration-300" />
+                <div className="w-[1px] h-4 bg-white/10 group-hover:bg-black/10 transition-colors"></div>
+                <img src="/assets/vit-logo.png" alt="VIT Logo" className="h-6 object-contain brightness-0 invert opacity-80 group-hover:invert-0 group-hover:opacity-100 transition-all duration-300" />
+              </div>
+            ) : (
+              <div className="flex items-center justify-center w-full h-full">
+                <Shuffle
+                  text="CSI"
+                  tag="span"
+                  className="text-white font-bold text-sm group-hover:text-black transition-colors"
+                  duration={0.3}
+                  shuffleDirection="down"
+                  triggerOnHover={true}
+                />
+              </div>
+            )}
+          </div>
         </ScrollLink>
 
         <div className="pill-nav-items desktop-only" ref={navItemsRef}>

@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import DecryptionCounter from './bits/DecryptionCounter';
 
 const stats = [
   { label: 'Events Conducted', value: '50+' },
@@ -25,8 +24,20 @@ const Stats = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl sm:text-6xl md:text-7xl font-black mb-4 tracking-tighter">
-                <DecryptionCounter value={stat.value} />
+              <div className="text-4xl sm:text-6xl md:text-7xl font-black mb-4 tracking-tighter px-2">
+                <motion.span
+                  initial={{ filter: 'blur(15px)', opacity: 0, y: 20 }}
+                  whileInView={{ filter: 'blur(0px)', opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    duration: 1, 
+                    delay: 0.3 + (index * 0.1),
+                    ease: [0.215, 0.61, 0.355, 1] 
+                  }}
+                  className="inline-block"
+                >
+                  {stat.value}
+                </motion.span>
               </div>
               <div className="text-white/40 text-xs font-black uppercase tracking-[0.3em]">
                 {stat.label}

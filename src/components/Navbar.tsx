@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <div className="flex justify-center w-full fixed top-0 z-50">
-      {/* @ts-ignore */}
+      {/* @ts-expect-error - PillNav prop types missing */}
       <PillNav
         items={navItems}
         baseColor="#000000"

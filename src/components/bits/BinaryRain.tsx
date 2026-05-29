@@ -42,6 +42,10 @@ const BinaryRain = ({
     init();
 
     const draw = () => {
+      if (!isVisible) {
+        animationFrameId = requestAnimationFrame(draw);
+        return;
+      }
       // Clear canvas with a bit more transparency to keep trails longer if desired, 
       // but here we want crispness, so we clear more firmly
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -85,11 +89,21 @@ const BinaryRain = ({
       animationFrameId = requestAnimationFrame(draw);
     };
 
+    let isVisible = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
+
     draw();
 
     return () => {
       window.removeEventListener('resize', init);
       cancelAnimationFrame(animationFrameId);
+      observer.disconnect();
     };
   }, [opacity, speed]);
 

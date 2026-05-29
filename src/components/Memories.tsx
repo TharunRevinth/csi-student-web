@@ -62,7 +62,7 @@ const Memories = () => {
               <PixelImage
                 src={memory.image}
                 active={true}
-                grid={memory.grid as any}
+                grid={memory.grid as "4x6" | "8x8"}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               {/* Desktop Hover Overlay */}

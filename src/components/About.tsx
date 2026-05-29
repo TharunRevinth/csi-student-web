@@ -1,12 +1,14 @@
 import { motion } from 'framer-motion';
 import TextReveal from './bits/TextReveal';
 import ScrambledText from './bits/ScrambledText';
+import QuestFragment from './bits/QuestFragment';
 
 const About = () => {
   const revealText = "Computer Society of India student chapter at VIT Chennai is a premier technical community. We bridge academia and industry through high-impact workshops, hackathons, and innovative projects. Our goal is to empower the next generation of technology leaders."
 
   return (
-    <section id="about" className="bg-black text-white">
+    <section id="about" className="bg-black text-white relative">
+      <QuestFragment index={0} className="absolute top-20 left-10" />
       {/* Cinematic Text Reveal Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-40">
         <motion.div 
@@ -36,7 +38,6 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="p-6 sm:p-10 border border-white/20 bg-white/5 backdrop-blur-sm relative group hover:border-white transition-colors"
           >
-            {/* @ts-ignore */}
             <ScrambledText className="text-lg sm:text-xl md:text-2xl font-black text-white leading-snug uppercase">
               WE DEVELOP TO INSPIRE. WE INNOVATE TO EMPOWER. JOIN THE TECHNICAL REVOLUTION AT VIT CHENNAI.
             </ScrambledText>
