@@ -178,7 +178,7 @@
   height: var(--nav-h);
   border-radius: 50%;
   background: var(--base, #000);
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   display: none;
   flex-direction: column;
   align-items: center;
@@ -193,13 +193,14 @@
 @media (max-width: 768px) {
   .mobile-menu-button {
     display: flex;
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 }
 
 .hamburger-line {
   width: 16px;
   height: 2px;
-  background: var(--pill-bg, #fff);
+  background: var(--pill-text, #fff);
   border-radius: 1px;
   transition: all 0.01s ease;
   transform-origin: center;

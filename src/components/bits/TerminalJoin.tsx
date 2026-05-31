@@ -130,7 +130,7 @@ const TerminalJoin = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           onClick={handleStart}
-          className={`border-2 px-10 py-4 font-bold transition-all text-sm tracking-widest uppercase ${
+          className={`border-2 px-4 sm:px-10 py-4 font-bold transition-all text-[10px] sm:text-sm tracking-[0.1em] sm:tracking-widest uppercase w-full sm:w-auto ${
             isComplete 
               ? 'border-green-500 text-green-500 hover:bg-green-500 hover:text-black shadow-[0_0_20px_rgba(34,197,94,0.3)]' 
               : 'border-white text-white hover:bg-white hover:text-black'

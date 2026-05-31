@@ -76,14 +76,29 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="border-t border-white/10 pt-12 flex flex-col md:flex-row justify-between items-center gap-8"
+          className="border-t border-white/10 pt-12 flex flex-col items-center gap-12"
         >
-          <p className="text-white/20 text-xs font-black tracking-[0.2em]">
-            © 2024 CSI VIT CHENNAI. ALL RIGHTS RESERVED.
-          </p>
-          <p className="text-white/20 text-xs font-black tracking-[0.2em]">
-            MADE WITH INTENT BY CSI VITC TECHNICAL TEAM
-          </p>
+          <div className="flex flex-col md:flex-row justify-between items-center w-full gap-8">
+            <p className="text-white/20 text-xs font-black tracking-[0.2em]">
+              © 2024 CSI VIT CHENNAI. ALL RIGHTS RESERVED.
+            </p>
+            <p className="text-white/20 text-xs font-black tracking-[0.2em]">
+              MADE WITH INTENT BY CSI VITC TECHNICAL TEAM
+            </p>
+          </div>
+
+          {/* Subtle Easter Egg Hint */}
+          <div className="flex flex-col items-center gap-3 text-center opacity-30 hover:opacity-100 transition-opacity duration-500 cursor-default">
+            <div className="text-[10px] font-black text-white uppercase tracking-[0.4em]">Classified Note</div>
+            <p className="text-[9px] text-white font-medium uppercase tracking-[0.1em] max-w-md leading-relaxed">
+              Terminal security is currently set to maximum. Collecting all 3 binary fragments will trigger a system-wide override and grant mainframe access.
+            </p>
+            <div className="flex gap-1">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="w-1 h-1 bg-white/40 rounded-full"></div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </footer>
